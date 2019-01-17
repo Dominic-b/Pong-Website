@@ -4,6 +4,9 @@ var animate = window.requestAnimationFrame ||
     function (callback) { window.setTimeout(callback, 1000 / 60) };
 
 var canvas = document.getElementById('myCanvas');
+canvas.width = window.innerWidth / 1.33;
+canvas.height = window.innerHeight / 1.33;
+
 var width = canvas.width;
 var height = canvas.height;
 var context = canvas.getContext('2d');
@@ -42,11 +45,11 @@ Paddle.prototype.render = function () {
 };
 
 function Player() {
-    this.paddle = new Paddle(0, (height / 2) - (75 / 2), 10, 75);
+    this.paddle = new Paddle(0, (height / 2) - (75 / 2), width / 100, height / 4);
 }
 
 function Computer() {
-    this.paddle = new Paddle(width - 10, (height / 2) - (75 / 2), 10, 75);
+    this.paddle = new Paddle(width - 10, (height / 2) - (75 / 2), width / 100, height / 4);
 }
 
 Player.prototype.render = function () {
@@ -60,9 +63,9 @@ Computer.prototype.render = function () {
 function Ball(x, y) {
     this.x = x;
     this.y = y;
-    this.x_speed = -3;
+    this.x_speed = - width / 180;
     this.y_speed = 0;
-    this.radius = 5;
+    this.radius = width / 90;
 }
 
 Ball.prototype.render = function () {
@@ -102,7 +105,7 @@ Ball.prototype.update = function (paddle1, paddle2) {
     this.y += this.y_speed;
 
     if (this.y - this.radius < 0) { // hitting th top
-        this.y = 5;
+        this.y = this.radius;
         this.y_speed = -this.y_speed;
     } else if (this.y + this.radius > height) { // hitting the bottom
         this.y = height - this.radius;
@@ -110,7 +113,7 @@ Ball.prototype.update = function (paddle1, paddle2) {
     }
 
     if (this.x < this.radius || this.x > width - this.radius) { // a point was scored
-        this.x_speed = -3;
+        this.x_speed = - width / 180;
         this.y_speed = 0;
         this.x = width / 2;
         this.y = height / 2;
@@ -146,9 +149,9 @@ Player.prototype.update = function () {
     for (var key in keysDown) {
         var value = Number(key);
         if (value == 38) { // up arrow
-            this.paddle.move(0, -4);
+            this.paddle.move(0, - height / 120);
         } else if (value == 40) { // down arrow
-            this.paddle.move(0, 4);
+            this.paddle.move(0, height / 120);
         }
     }
 };
@@ -175,10 +178,10 @@ var update = function () {
 
 Computer.prototype.update = function (ball) {
     var diff = -(this.paddle.y + (this.paddle.height / 2) - ball.y);
-    if (diff < -4) {
-        diff = -4;
-    } else if (diff > 4) {
-        diff = 4;
+    if (diff < - height / 120) {
+        diff = - height / 120;
+    } else if (diff > height / 120) {
+        diff = height / 120;
     }
     this.paddle.move(0, diff);
     if (this.paddle.y < 0) {
