@@ -93,7 +93,7 @@ function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
             if (bricks[c][r].status == 1) {
-                var brickX = (r * (brickWidth + brickPadding));
+                var brickX = (r * (brickWidth + brickPadding)) + (canvas.width / 30) / 2;
                 var brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
