@@ -67,12 +67,12 @@ canvas {
 
         /* Change the color of links on hover */
         .topnav a:hover {
-            background-color: #000000;
+            background-color: #FFFFFF;
             color: black;
         }
 
         /* Add a color to the active/current link */
         .topnav a.active {
-            background-color: #000000;
+            background-color: #FFFFFF;
             color: black;
         }
