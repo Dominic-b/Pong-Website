@@ -26,7 +26,7 @@ var update = function () {
 };
 
 var render = function () {
-    context.fillStyle = "#FF00FF";
+    context.fillStyle = "#FFFFFF";
     context.fillRect(0, 0, width, height);
 };
 
@@ -80,7 +80,7 @@ var computer = new Computer();
 var ball = new Ball(width / 2, height / 2);
 
 var render = function () {
-    context.fillStyle = "#000000";
+    context.fillStyle = "#FFFFFF";
     context.fillRect(0, 0, width, height);
     player.render();
     computer.render();
