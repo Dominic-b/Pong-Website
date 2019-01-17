@@ -51,13 +51,14 @@ canvas {
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #333;
+    background-color: #333/;
     overflow: hidden;
 }
 
     /* Style the links inside the navigation bar */
     .topnav a {
         float: left;
+        background-color: #919191
         color: black;
         text-align: center;
         padding: 14px 16px;
