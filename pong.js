@@ -45,11 +45,11 @@ Paddle.prototype.render = function () {
 };
 
 function Player() {
-    this.paddle = new Paddle(0, (height / 2) - (75 / 2), width / 100, height / 4);
+    this.paddle = new Paddle(0, (height / 2) - (height / 8), width / 100, height / 4);
 }
 
 function Computer() {
-    this.paddle = new Paddle(width - 10, (height / 2) - (75 / 2), width / 100, height / 4);
+    this.paddle = new Paddle(width - 10, (height / 2) - (height / 8), width / 100, height / 4);
 }
 
 Player.prototype.render = function () {
@@ -104,7 +104,7 @@ Ball.prototype.update = function (paddle1, paddle2) {
     this.x += this.x_speed;
     this.y += this.y_speed;
 
-    if (this.y - this.radius < 0) { // hitting th top
+    if (this.y - this.radius < 0) { // hitting the top
         this.y = this.radius;
         this.y_speed = -this.y_speed;
     } else if (this.y + this.radius > height) { // hitting the bottom
